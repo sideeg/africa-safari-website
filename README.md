@@ -4,7 +4,7 @@ Welcome to the official repository for **TOURBUKS AFRICA SAFARIS** – a simple,
 
 ## 🌐 Live Preview
 
-> Coming soon... (or add your GitHub Pages link here if hosted)
+https://www.sideeg.com/africa-safari-website/safari.html
 
 ## 📄 Sections
 
@@ -22,18 +22,6 @@ The website is structured into the following main sections:
 - **CSS3**
 - Mobile-first and responsive design principles
 
-## 📁 Folder Structure
-
-```
-project-root/
-├── index.html
-├── css/
-│   └── styles.css
-├── images/
-│   └── (gallery and site images)
-└── README.md
-```
-
 ## ✨ Features
 
 - Clean and modern one-page layout
@@ -47,7 +35,7 @@ To run the site locally:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/tourbuks-africa-safaris.git
+   git clone https://github.com/sideeg/africa-safari-website.git
    ```
 2. Open `index.html` in your web browser.
 
