@@ -48,4 +48,4 @@ For more information or to book a safari:
 
 ---
 
-> Created with passion for TOURBUKS AFRICA SAFARIS 🦁 by [Your Name]
+> Created with passion for TOURBUKS AFRICA SAFARIS 🦁 by Sideeg Mohammed
