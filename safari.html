@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tourbuks Africa Safaris - Your Adventure, Explore!</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f8f6f2;
+      }
+
+      /* Header & Navigation */
+      .header {
+        background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
+        color: white;
+        padding: 1rem 0;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 2rem;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      .logo-icon {
+        width: 40px;
+        height: 40px;
+        background: #228b22;
+        border-radius: 50%;
+        margin-right: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+
+      .logo-icon::before {
+        content: "🦍";
+        font-size: 20px;
+      }
+
+      .nav-menu {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-menu a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .nav-menu a:hover {
+        color: #ff8c00;
+      }
+
+      .mobile-menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+          url("images/hover.jpg");
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        margin-top: 80px;
+      }
+
+      .hero-content h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      }
+
+      .hero-content p {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+      }
+
+      .cta-button {
+        background: linear-gradient(45deg, #ff8c00, #ffa500);
+        color: white;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 30px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .cta-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(255, 140, 0, 0.4);
+      }
+
+      /* Section Styles */
+      .section {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 4rem 2rem;
+      }
+
+      .section h2 {
+        font-size: 2.5rem;
+        text-align: center;
+        margin-bottom: 3rem;
+        color: #8b4513;
+        position: relative;
+      }
+
+      .section h2::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 3px;
+        background: linear-gradient(45deg, #ff8c00, #228b22);
+        border-radius: 2px;
+      }
+
+      /* About Section */
+      .about-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+      }
+
+      .about-text {
+        font-size: 1.1rem;
+        line-height: 1.8;
+      }
+
+      .about-image {
+        text-align: center;
+        font-size: 8rem;
+        color: #228b22;
+      }
+
+      /* Safari Packages */
+      .packages-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .package-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .package-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      }
+
+      .package-image {
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 4rem;
+        color: white;
+        position: relative;
+      }
+
+      .package-image::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 0;
+      }
+
+      .package-content {
+        padding: 1.5rem;
+      }
+
+      .package-content h3 {
+        color: #8b4513;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+      }
+
+      .package-price {
+        color: #ff8c00;
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin: 1rem 0;
+      }
+
+      /* Gallery */
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+      }
+
+      .gallery-item {
+        aspect-ratio: 1;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        color: white;
+        transition: transform 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .gallery-item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.2);
+        transition: background 0.3s ease;
+      }
+
+      .gallery-item:hover::before {
+        background: rgba(0, 0, 0, 0.1);
+      }
+
+      .gallery-item:hover {
+        transform: scale(1.05);
+      }
+
+      /* Contact Section */
+      .contact-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+      }
+
+      .contact-form {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #8b4513;
+        font-weight: bold;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: #ff8c00;
+      }
+
+      .contact-info {
+        background: linear-gradient(135deg, #8b4513, #a0522d);
+        color: white;
+        padding: 2rem;
+        border-radius: 15px;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        font-size: 1.1rem;
+      }
+
+      .contact-icon {
+        width: 40px;
+        height: 40px;
+        background: #ff8c00;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+      }
+
+      /* Footer */
+      .footer {
+        background: #2c1810;
+        color: white;
+        text-align: center;
+        padding: 2rem;
+      }
+
+      .back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #ff8c00;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        z-index: 1000;
+      }
+
+      .back-to-top:hover {
+        transform: scale(1.1);
+      }
+
+      /* Mobile Responsive */
+      @media (max-width: 768px) {
+        .nav-menu {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background: #8b4513;
+          flex-direction: column;
+          padding: 1rem;
+          gap: 1rem;
+        }
+
+        .nav-menu.active {
+          display: flex;
+        }
+
+        .mobile-menu-btn {
+          display: block;
+        }
+
+        .hero-content h1 {
+          font-size: 2.5rem;
+        }
+
+        .about-content {
+          grid-template-columns: 1fr;
+        }
+
+        .about-image {
+          font-size: 4rem;
+        }
+
+        .contact-content {
+          grid-template-columns: 1fr;
+        }
+
+        .section {
+          padding: 2rem 1rem;
+        }
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .section {
+        animation: fadeInUp 0.8s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="nav-container">
+        <div class="logo">
+          <div class="logo-icon"></div>
+          TOURBUKS AFRICA SAFARIS
+        </div>
+        <nav>
+          <ul class="nav-menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#packages">Safari Packages</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+          <button class="mobile-menu-btn">☰</button>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h1>YOUR ADVENTURE, EXPLORE!</h1>
+        <p>
+          Discover the untamed beauty of Uganda with authentic safari
+          experiences
+        </p>
+        <a href="#packages" class="cta-button">Explore Packages</a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+      <h2>About Tourbuks Africa Safaris</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p>
+            Based in the heart of Uganda, Tourbuks Africa Safaris is your
+            gateway to extraordinary African adventures. We specialize in
+            creating unforgettable experiences that connect you with Uganda's
+            incredible wildlife, breathtaking landscapes, and rich cultural
+            heritage.
+          </p>
+
+          <p>
+            Our mission is to provide authentic, sustainable safari experiences
+            while supporting local communities and conservation efforts. With
+            over a decade of experience, our expert guides ensure your safety
+            while revealing the hidden treasures of the Pearl of Africa.
+          </p>
+
+          <p><strong>Why Choose Us?</strong></p>
+          <ul style="margin-left: 1.5rem; margin-top: 1rem">
+            <li>Expert local guides with deep knowledge of Ugandan wildlife</li>
+            <li>Sustainable tourism practices supporting conservation</li>
+            <li>Customized safari packages for all budgets</li>
+            <li>24/7 customer support throughout your journey</li>
+            <li>Partnership with local communities</li>
+          </ul>
+        </div>
+
+        <img
+          class="package-image"
+          src="images/about.jpg"
+          alt="Your image description"
+          style="width: 100%; height: 100%"
+        />
+      </div>
+    </section>
+
+    <!-- Safari Packages -->
+    <section id="packages" class="section">
+      <h2>Our Safari Packages</h2>
+      <div class="packages-grid">
+        <div class="package-card">
+          <div
+            class="package-image"
+            style="background-image: url('images/Gorilla.jpg')"
+          ></div>
+          <div class="package-content">
+            <h3>Gorilla Trekking Experience</h3>
+            <p>
+              Get up close with mountain gorillas in Bwindi Impenetrable Forest.
+              An once-in-a-lifetime encounter with our gentle giants.
+            </p>
+            <div class="package-price">From $800</div>
+            <a href="#contact" class="cta-button">Book Now</a>
+          </div>
+        </div>
+
+        <div class="package-card">
+          <div
+            class="package-image"
+            style="background-image: url('images/Safari.jpg')"
+          ></div>
+          <div class="package-content">
+            <h3>Big Five Safari</h3>
+            <p>
+              Explore Queen Elizabeth National Park and witness the legendary
+              Big Five in their natural habitat.
+            </p>
+            <div class="package-price">From $600</div>
+            <a href="#contact" class="cta-button">Book Now</a>
+          </div>
+        </div>
+
+        <div class="package-card">
+          <div
+            class="package-image"
+            style="background-image: url('images/Cruise.jpg')"
+          ></div>
+          <div class="package-content">
+            <h3>Nile River Cruise</h3>
+            <p>
+              Navigate the source of the Nile with boat cruises, white-water
+              rafting, and spectacular Murchison Falls views.
+            </p>
+            <div class="package-price">From $450</div>
+            <a href="#contact" class="cta-button">Book Now</a>
+          </div>
+        </div>
+
+        <div class="package-card">
+          <div
+            class="package-image"
+            style="background-image: url('images/Cultural.jpg')"
+          ></div>
+          <div class="package-content">
+            <h3>Cultural Heritage Tours</h3>
+            <p>
+              Immerse yourself in Uganda's rich cultural diversity with visits
+              to traditional villages and local communities.
+            </p>
+            <div class="package-price">From $350</div>
+            <a href="#contact" class="cta-button">Book Now</a>
+          </div>
+        </div>
+
+        <div class="package-card">
+          <div
+            class="package-image"
+            style="background-image: url('images/Chimpanzee.jpg')"
+          ></div>
+          <div class="package-content">
+            <h3>Chimpanzee Tracking</h3>
+            <p>
+              Track our closest relatives in Kibale Forest National Park, home
+              to over 1,400 chimpanzees.
+            </p>
+            <div class="package-price">From $400</div>
+            <a href="#contact" class="cta-button">Book Now</a>
+          </div>
+        </div>
+
+        <div class="package-card">
+          <div
+            class="package-image"
+            style="background-image: url('images/Mountain.jpg')"
+          ></div>
+          <div class="package-content">
+            <h3>Mountain Hiking Adventures</h3>
+            <p>
+              Conquer the Rwenzori Mountains or Mount Elgon with guided hiking
+              expeditions for all skill levels.
+            </p>
+            <div class="package-price">From $500</div>
+            <a href="#contact" class="cta-button">Book Now</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="section">
+      <h2>Gallery</h2>
+      <div class="gallery-grid">
+        <div
+          class="gallery-item"
+          style="background-image: url('images/africa1.jpg')"
+        ></div>
+        <div
+          class="gallery-item"
+          style="background-image: url('images/africa2.jpg')"
+        ></div>
+        <div
+          class="gallery-item"
+          style="background-image: url('images/africa3.jpg')"
+        ></div>
+        <div
+          class="gallery-item"
+          style="background-image: url('images/africa4.jpg')"
+        ></div>
+        <div
+          class="gallery-item"
+          style="background-image: url('images/africa5.jpg')"
+        ></div>
+        <div
+          class="gallery-item"
+          style="background-image: url('images/africa6.jpg')"
+        ></div>
+        <div
+          class="gallery-item"
+          style="background-image: url('images/africa7.jpg')"
+        ></div>
+        <div
+          class="gallery-item"
+          style="background-image: url('images/africa8.jpg')"
+        ></div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <h2>Contact Us</h2>
+      <div class="contact-content">
+        <div class="contact-form">
+          <h3 style="color: #8b4513; margin-bottom: 1.5rem">Get a Quote</h3>
+          <form>
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" />
+            </div>
+            <div class="form-group">
+              <label for="package">Interested Package</label>
+              <input
+                type="text"
+                id="package"
+                name="package"
+                placeholder="e.g., Gorilla Trekking"
+              />
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                placeholder="Tell us about your dream safari..."
+              ></textarea>
+            </div>
+            <button type="submit" class="cta-button">Send Message</button>
+          </form>
+        </div>
+
+        <div class="contact-info">
+          <h3 style="margin-bottom: 2rem">Get in Touch</h3>
+
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <strong>Phone</strong><br />
+              +256 700 123 456<br />
+              +256 750 987 654
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div>
+              <strong>Email</strong><br />
+              info@tourbuks.com<br />
+              bookings@tourbuks.com
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">💬</div>
+            <div>
+              <strong>WhatsApp</strong><br />
+              +256 700 123 456
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <strong>Location</strong><br />
+              Kampala, Uganda<br />
+              East Africa
+            </div>
+          </div>
+
+          <div style="margin-top: 2rem">
+            <p><strong>Office Hours:</strong></p>
+            <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
+            <p>Saturday: 9:00 AM - 4:00 PM</p>
+            <p>Sunday: Emergency only</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>
+        &copy; 2024 Tourbuks Africa Safaris. All rights reserved. | Your
+        Adventure, Explore!
+      </p>
+      <p>Uganda Tourism Board Licensed | Sustainable Tourism Certified</p>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" onclick="scrollToTop()">↑</button>
+
+    <script>
+      // Mobile menu toggle
+      const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
+      const navMenu = document.querySelector(".nav-menu");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        navMenu.classList.toggle("active");
+      });
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+          // Close mobile menu after clicking
+          navMenu.classList.remove("active");
+        });
+      });
+
+      // Back to top functionality
+      function scrollToTop() {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
+
+      // Show/hide back to top button
+      window.addEventListener("scroll", () => {
+        const backToTopBtn = document.querySelector(".back-to-top");
+        if (window.pageYOffset > 300) {
+          backToTopBtn.style.display = "block";
+        } else {
+          backToTopBtn.style.display = "none";
+        }
+      });
+
+      // Form submission (placeholder)
+      document.querySelector("form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        alert(
+          "Thank you for your interest! We will contact you within 24 hours to discuss your safari adventure."
+        );
+      });
+
+      // Add loading animation
+      window.addEventListener("load", () => {
+        document.body.style.opacity = "0";
+        setTimeout(() => {
+          document.body.style.transition = "opacity 0.5s ease";
+          document.body.style.opacity = "1";
+        }, 100);
+      });
+    </script>
+  </body>
+</html>
